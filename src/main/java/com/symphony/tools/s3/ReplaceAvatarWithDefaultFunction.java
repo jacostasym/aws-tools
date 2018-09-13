@@ -67,7 +67,10 @@ public class ReplaceAvatarWithDefaultFunction implements Function {
   private String prefix;
   private S3Client s3;
   private AwsCredentialsProvider credentialsProvider;
-  private Region region = Region.US_EAST_1;
+
+  @Option(name = "-region", hidden = true,
+      usage = "bucket prefix to avatars. See userpic node in Zk")
+  private String region = "us-east-1";
 
   public void init(String args[]) throws CmdLineException {
     CmdLineParser parser = new CmdLineParser(this);
@@ -86,7 +89,7 @@ public class ReplaceAvatarWithDefaultFunction implements Function {
       credentialsProvider = DefaultCredentialsProvider.create();
     }
 
-    this.s3 = S3Client.builder().credentialsProvider(credentialsProvider).region(region).build();
+    this.s3 = S3Client.builder().credentialsProvider(credentialsProvider).region(Region.of(region)).build();
   }
 
 
@@ -149,7 +152,7 @@ public class ReplaceAvatarWithDefaultFunction implements Function {
     for (int i = 0; i < THREAD_COUNT; i++) {
       // System.out.println("adding new task");
       executer.execute(new Task(bucket,
-          S3Client.builder().credentialsProvider(credentialsProvider).region(region).build()));
+          S3Client.builder().credentialsProvider(credentialsProvider).region(Region.of(region)).build()));
     }
     this.replaceWithDefaultAvatarForCompanyPrefix();
     //Shutdown after five hours not matter what
