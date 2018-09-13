@@ -17,6 +17,7 @@ import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectResponse;
 import software.amazon.awssdk.services.s3.model.S3Object;
+import software.amazon.awssdk.utils.IoUtils;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -45,10 +46,12 @@ public class ReplaceAvatarWithDefaultFunction implements Function {
 
   static {
     try {
-      buffer_50 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/main/resources/50.png")));
-      buffer_150 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/main/resources/150.png")));
-      buffer_500 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/main/resources/500.png")));
-      buffer_600 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/main/resources/600.png")));
+      ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+
+      buffer_50 = ByteBuffer.wrap(IoUtils.toByteArray(classLoader.getResourceAsStream("50.png")));
+      buffer_150 = ByteBuffer.wrap(IoUtils.toByteArray(classLoader.getResourceAsStream("150.png")));
+      buffer_500 = ByteBuffer.wrap(IoUtils.toByteArray(classLoader.getResourceAsStream("500.png")));
+      buffer_600 = ByteBuffer.wrap(IoUtils.toByteArray(classLoader.getResourceAsStream("600.png")));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
