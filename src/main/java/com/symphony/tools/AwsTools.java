@@ -43,7 +43,7 @@ public class AwsTools {
   }
 
   private void printUsage() {
-    System.out.println("java -jar AwsTools.jar [functionName]");
+    System.out.println("java -jar symphony-aws-tools.jar [functionName]");
     System.out.println("Available functions:");
     for (Function fn : FUNCTIONS) {
       System.out.println(fn.getName());

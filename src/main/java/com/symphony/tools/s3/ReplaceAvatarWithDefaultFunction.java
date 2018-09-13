@@ -152,6 +152,7 @@ public class ReplaceAvatarWithDefaultFunction implements Function {
           S3Client.builder().credentialsProvider(credentialsProvider).region(region).build()));
     }
     this.replaceWithDefaultAvatarForCompanyPrefix();
+    //Shutdown after five hours not matter what
     LATCH.await(5, TimeUnit.HOURS);
     executer.shutdownNow();
   }
