@@ -4,9 +4,8 @@
 
   <groupId>com.symphony.tools</groupId>
   <artifactId>aws-tools</artifactId>
-  <packaging>jar</packaging>
   <version>1.0</version>
-  <name>aws-tools</name>
+
 
 
   <properties>

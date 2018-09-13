@@ -45,10 +45,10 @@ public class ReplaceAvatarWithDefaultFunction implements Function {
 
   static {
     try {
-      buffer_50 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/resources/50.png")));
-      buffer_150 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/resources/150.png")));
-      buffer_500 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/resources/500.png")));
-      buffer_600 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/resources/600.png")));
+      buffer_50 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/main/resources/50.png")));
+      buffer_150 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/main/resources/150.png")));
+      buffer_500 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/main/resources/500.png")));
+      buffer_600 = ByteBuffer.wrap(Files.readAllBytes(Paths.get("src/main/resources/600.png")));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
